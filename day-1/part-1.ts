@@ -7,17 +7,12 @@ const run = async () => {
         .split('\n')
         .map((entry: string) => Number(entry.trim()));
 
-    let prev: number | undefined = undefined;
-    let count = 0;
-
-    for (const entry of entries) {
-        if (prev && prev < entry) {
+    return entries.reduce((count, entry, i) => {
+        if (entries[i - 1] && entries[i - 1] < entry) {
             count++;
         }
-        prev = entry;
-    }
-
-    return count;
+        return count;
+    }, 0);
 };
 
 run().then((result) => console.log(`Result: ${result}`));

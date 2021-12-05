@@ -7,18 +7,14 @@ const run = async () => {
         .split('\n')
         .map((entry: string) => Number(entry.trim()));
 
-    let prev: number | undefined;
-    let count = 0;
-
-    for (let i = 2; i < entries.length; i++) {
-        const sum = entries[i - 2] + entries[i - 1] + entries[i];
-        if (prev && prev < sum) {
-            count++;
+    return entries.reduce((count, entry, i) => {
+        if (i > 2) {
+            const sum1 = entries[i - 3] + entries[i - 2] + entries[i - 1];
+            const sum2 = entries[i - 2] + entries[i - 1] + entries[i];
+            if (sum1 < sum2) count++;
         }
-        prev = sum;
-    }
-
-    return count;
+        return count;
+    }, 0);
 };
 
 run().then((result) => console.log(`Result: ${result}`));
