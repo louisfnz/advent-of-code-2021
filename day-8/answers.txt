@@ -1,2 +1,2 @@
-Part 1:
-Part 2:
+Part 1: 521
+Part 2: 1016804
