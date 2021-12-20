@@ -1,5 +1,4 @@
 import {readFileSync} from 'fs';
-import {runInNewContext} from 'vm';
 
 const input = readFileSync(__dirname + '/input.txt', 'utf-8');
 
